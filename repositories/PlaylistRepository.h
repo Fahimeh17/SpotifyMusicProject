@@ -64,14 +64,14 @@ private:
 
 public:
     explicit PlaylistRepository(const std::string &path = "data/playlists.txt",
-                                 const std::string &linkPath = "data/playlist_songs.csv")
+                                const std::string &linkPath = "data/playlist_songs.csv")
         : filePath(path), linkFilePath(linkPath), nextId(1) {
         load();
     }
 
     int save(Playlist &entity) override {
         auto it = std::find_if(playlists_.begin(), playlists_.end(),
-                                [&](const Playlist &p) { return p.getId() == entity.getId() && entity.getId() != 0; });
+                               [&](const Playlist &p) { return p.getId() == entity.getId() && entity.getId() != 0; });
         if (it != playlists_.end()) {
             *it = entity;
             persist();
@@ -85,7 +85,7 @@ public:
 
     bool remove(int id) override {
         auto it = std::find_if(playlists_.begin(), playlists_.end(),
-                                [&](const Playlist &p) { return p.getId() == id; });
+                               [&](const Playlist &p) { return p.getId() == id; });
         if (it == playlists_.end()) return false;
         playlists_.erase(it);
         persist();
@@ -95,7 +95,7 @@ public:
         // اين ليست خاص با آهنگ‌ها از بين مي‌رود).
         auto links = loadLinks();
         links.erase(std::remove_if(links.begin(), links.end(),
-                                    [&](const std::pair<int, int> &l) { return l.first == id; }),
+                                   [&](const std::pair<int, int> &l) { return l.first == id; }),
                     links.end());
         persistLinks(links);
         return true;
@@ -103,7 +103,7 @@ public:
 
     std::optional<Playlist> search(int id) override {
         auto it = std::find_if(playlists_.begin(), playlists_.end(),
-                                [&](const Playlist &p) { return p.getId() == id; });
+                               [&](const Playlist &p) { return p.getId() == id; });
         if (it == playlists_.end()) return std::nullopt;
         return *it;
     }
@@ -126,12 +126,22 @@ public:
         auto links = loadLinks();
         auto before = links.size();
         links.erase(std::remove_if(links.begin(), links.end(),
-                                    [&](const std::pair<int, int> &l) {
-                                        return l.first == playlistId && l.second == songId;
-                                    }),
+                                   [&](const std::pair<int, int> &l) {
+                                       return l.first == playlistId && l.second == songId;
+                                   }),
                     links.end());
         persistLinks(links);
         return links.size() != before;
+    }
+
+    // حذف يك آهنگ از تمام ليست‌هاي پخش (در سراسر سيستم) - براي زماني كه خود
+    // آهنگ حذف مي‌شود و ديگر نبايد در هيچ ليست‌پخشي وجود داشته باشد.
+    void removeSongFromAllPlaylists(int songId) {
+        auto links = loadLinks();
+        links.erase(std::remove_if(links.begin(), links.end(),
+                                   [&](const std::pair<int, int> &l) { return l.second == songId; }),
+                    links.end());
+        persistLinks(links);
     }
 
     // تمام ليست‌هاي پخش يك شنونده

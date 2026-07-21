@@ -31,6 +31,10 @@ set(PROJECT_SOURCES
         repositories/SongRepository.h
         repositories/AlbumRepository.h
         repositories/PlaylistRepository.h
+        services/AuthService.h
+                services/ArtistService.h
+                services/ListenerService.h
+                services/SortFilterUtils.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
