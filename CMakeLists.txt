@@ -41,6 +41,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(SpotifyMusicProject
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        loginpage.h loginpage.cpp loginpage.ui
+        registerpage.h registerpage.cpp registerpage.ui
     )
 else()
     if(ANDROID)
