@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ListenerPage</class>
+ <widget class="QWidget" name="ListenerPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="labelWelcome">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Welcome back!</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonExplore">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>161</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Explore The World of Music</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidgetPlaylists">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Favorite Songs</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="buttonAddPlaylist">
+   <property name="geometry">
+    <rect>
+     <x>291</x>
+     <y>51</y>
+     <width>80</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add Playlist</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonEditPlaylist">
+   <property name="geometry">
+    <rect>
+     <x>291</x>
+     <y>73</y>
+     <width>80</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Edit Playlist</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonDeletePlaylist">
+   <property name="geometry">
+    <rect>
+     <x>291</x>
+     <y>95</y>
+     <width>80</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete Playlist</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonLogout">
+   <property name="geometry">
+    <rect>
+     <x>291</x>
+     <y>117</y>
+     <width>80</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Log out</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

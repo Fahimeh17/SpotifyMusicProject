@@ -43,6 +43,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         loginpage.h loginpage.cpp loginpage.ui
         registerpage.h registerpage.cpp registerpage.ui
+        artistpage.h artistpage.cpp artistpage.ui
+        listenerpage.h listenerpage.cpp listenerpage.ui
+        songlistpage.h songlistpage.cpp songlistpage.ui
     )
 else()
     if(ANDROID)
